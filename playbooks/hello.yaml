@@ -10,6 +10,12 @@
     - name: Print event information
       ansible.builtin.debug:
         msg: '{{ ansible_eda.event }}'
+      when: ansible_eda is defined
+
+    - name: Print event information
+      ansible.builtin.debug:
+        msg: 'ansible_eda variable is not defined, is prompt on launch active?'
+      when: ansible_eda is not defined
 
     - name: Set msg fact
       ansible.builtin.set_fact:
